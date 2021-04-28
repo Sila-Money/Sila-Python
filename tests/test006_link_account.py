@@ -50,7 +50,7 @@ class Test006LinkAccountTest(unittest.TestCase):
         payload = {
             "user_handle": instant_ach_handle,
             "account_name": "default_plaid",
-            "public_token": "sandbox"
+            "plaid_token": "sandbox"
         }
 
         response = silasdk.User.linkAccount(
@@ -86,10 +86,27 @@ class Test006LinkAccountTest(unittest.TestCase):
         self.assertEqual(response["status"], "SUCCESS")
         self.assertIsNotNone(response['account_owner_name'])
 
+        plaid_response = app.postPlaid(
+            "https://sandbox.plaid.com/link/item/create", options)
+        payload = {
+            "user_handle": user_handle,
+            "account_name": "default_plaid2",
+            "plaid_token": plaid_response["public_token"],
+            "message": "link_account_msg",
+            "plaid_token_type": "legacy"
+        }
+
+        response = silasdk.User.linkAccount(
+            app, payload, eth_private_key, True)
+
+        
+        self.assertEqual(response["status"], "SUCCESS")
+        self.assertIsNotNone(response['account_owner_name'])
+
     def test_link_account_400(self):
         payload = {
             "account_name": "default",
-            "public_token": ""
+            "plaid_token": ""
         }
 
         response = silasdk.User.linkAccount(app, payload, eth_private_key)

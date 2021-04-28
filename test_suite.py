@@ -22,6 +22,7 @@ from tests.test006_certify_beneficial_owner import Test006CertifyBeneficialOwner
 from tests.test006_certify_business import Test006CertifyBusinessTest
 from tests.test006_link_account import Test006LinkAccountTest
 from tests.test006_plaid_link_token import Test006PlaidLinkTokenTest
+from tests.test006_plaid_update_link_token import Test006PlaidUpdateLinkTokenTest
 from tests.test007_get_accounts import Test007GetAccountsTest
 from tests.test007_delete_account import Test007DeleteAccountTest
 from tests.test007_update_account import Test007UpdateAccountTest
@@ -75,6 +76,7 @@ def run_unit_tests():
             Test006CertifyBeneficialOwnerTest,
             Test006CertifyBusinessTest,
             Test006LinkAccountTest,
+            Test006PlaidUpdateLinkTokenTest,
             Test007DeleteAccountTest,
             Test007UpdateAccountTest,
             Test007GetAccountsTest,

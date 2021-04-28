@@ -61,6 +61,13 @@ class User():
         path = endPoints["linkAccount"]
         msg_type = ("link_account_msg" if (plaid is False)
                     else "link_account_msg_plaid")
+        if payload.get('public_token') is not None:
+            warnings.warn(
+                'public_token is deprecated in favor of plaid_token', DeprecationWarning)
+            payload.update({
+                "plaid_token": payload.get('public_token')
+            })
+            payload.pop('public_token')
         response = message.postRequest(
             self, path, msg_type, payload, user_private_key)
         return response
@@ -321,4 +328,12 @@ class User():
         msg_type = "update_account"
         response = message.postRequest(
             app, path, msg_type, payload, user_private_key)
+        return response
+
+    @staticmethod
+    def plaid_update_link_token(app: App, payload: dict) -> dict:
+        path = endPoints["plaid_update_link_token"]
+        msg_type = "plaid_update_link_token"
+        response = message.postRequest(
+            app, path, msg_type, payload)
         return response

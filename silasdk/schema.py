@@ -22,9 +22,10 @@ Schema = [
             "reference": ""
         },
         "message": "link_account_msg",
-        "public_token": "",
+        "plaid_token": "",
         "account_name": "",
-        "selected_account_id": ""
+        "selected_account_id": "",
+        "plaid_token_type": ""
     }},
     {"link_account_msg": {
         "header": {
@@ -473,6 +474,16 @@ Schema = [
             },
             "account_name": "",
             "new_account_name": ""
+        }
+    },
+    {
+        "plaid_update_link_token": {
+            "header": {
+                "created": "",
+                "app_handle": "",
+                "user_handle": "",
+            },
+            "account_name": "",
         }
     }
 ]

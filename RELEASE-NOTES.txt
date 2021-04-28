@@ -1,4 +1,9 @@
-v0.2.21
--Adding support for check_partner_kyc endpoint.
--Adding support for update_account endpoint.
--Removing blank fields in request body for register endpoints.
+v0.2.22
+    -Adding support for plaid_update_link_token endpoint.
+    -Deprecating public_token in linkAccount.
+    -Adding support for plaid_token and plaid_token_type in linkAccount.
+
+v0.2.21 
+    -Adding support for check_partner_kyc endpoint.
+    -Adding support for update_account endpoint.
+    -Removing blank fields in request body for register endpoints.
